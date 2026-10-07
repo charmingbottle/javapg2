@@ -50,13 +50,32 @@ public class App {
             } else if (path.equals("/")) {
                 String html = "<!doctype html><html><head><meta charset='UTF-8'>"
                         + "<title>私のTodoリスト</title>"
-                        + "<style>body { max-width: 640px; margin: 24px auto; padding: 0 16px; font-size: 16px; } "
-                        + "input { font-size: 16px; } button { font-size: 16px; }</style>"
-                        + "</head><body><h1>私のTodoリスト</h1>"
+                        + "<style>"
+                        + "* { box-sizing: border-box; }"
+                        + "body { max-width: 680px; margin: 0 auto; padding: 48px 20px; "
+                        + "font-family: system-ui, sans-serif; font-size: 16px; color: #24324a; "
+                        + "background: #f4f7fb; }"
+                        + "main { background: white; padding: 32px; border-radius: 18px; "
+                        + "box-shadow: 0 8px 24px rgba(36, 50, 74, .10); }"
+                        + "h1 { margin: 0 0 24px; color: #1d3557; font-size: 32px; }"
+                        + "form { display: flex; gap: 8px; margin-bottom: 24px; }"
+                        + "input { flex: 1; min-width: 0; padding: 11px 13px; border: 1px solid #cbd5e1; "
+                        + "border-radius: 9px; font-size: 16px; }"
+                        + "input:focus { outline: 2px solid #93c5fd; border-color: #3b82f6; }"
+                        + "button { padding: 10px 18px; border: 0; border-radius: 9px; "
+                        + "background: #3b82f6; color: white; font-size: 16px; cursor: pointer; }"
+                        + "button:hover { background: #2563eb; }"
+                        + "ul { padding: 0; margin: 0; list-style: none; }"
+                        + "li { margin: 10px 0; padding: 14px 16px; background: #f8fafc; "
+                        + "border: 1px solid #e2e8f0; border-radius: 10px; }"
+                        + "li a { margin-left: 8px; color: #2563eb; font-size: 14px; }"
+                        + "p { padding: 16px; color: #64748b; background: #f8fafc; border-radius: 10px; }"
+                        + "</style>"
+                        + "</head><body><main><h1>私のTodoリスト</h1>"
                         + "<form method='post' action='/add'><input name='todo'>"
                         + "<button>追加</button></form>"; // ★ 見出しと最小限のstyle（見た目の指定）を追加
                 html += listTodos(); // ★ ファイル保存版から変更: SELECTで一覧を取得
-                html += "</body></html>";
+                html += "</main></body></html>";
                 send(exchange, 200, html, "text/html; charset=UTF-8");
                 return;
             }
